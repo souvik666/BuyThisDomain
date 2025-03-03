@@ -1,54 +1,66 @@
-# React + TypeScript + Vite
+# Domain Selling Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based landing page for selling your domain with a contact form for lead collection. This project is designed to be easy to set up and deploy, making it perfect for beginners.
 
-Currently, two official plugins are available:
+## Features
+- **Modern UI** built with React & Chakra UI
+- **Form submission support** for collecting inquiries
+- **Dynamic domain display**
+- **API support** for tracking and analytics
+- **Easy deployment** with Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+Make sure you have the following installed on your machine:
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [Git](https://git-scm.com/)
+- [Vite](https://vitejs.dev/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Clone the Repository
+```sh
+git clone https://github.com/your-username/domain-landing.git
+cd domain-landing
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Install Dependencies
+```sh
+npm install
 ```
+
+### Configure Environment Variables
+Create a `.env` file in the root directory and add the following variables:
+
+```ini
+VITE_API_KEY="your-api-key"
+VITE_AUTH_DOMAIN="your-auth-domain"
+VITE_PROJECT_ID="your-project-id"
+VITE_STORAGE_BUCKET="your-storage-bucket"
+VITE_MESSAGING_SENDER_ID="your-messaging-sender-id"
+VITE_APP_ID="your-app-id"
+VITE_MEASUREMENT_ID="your-measurement-id"
+VITE_DATABASE_URL="your-database-url"
+```
+> ⚠️ **Important:** Never expose your `.env` file in public repositories. Use `.gitignore` to prevent it from being tracked.
+
+### Run the Project
+```sh
+npm run dev
+```
+Your app will be running at `http://localhost:5173`
+
+## Deployment
+
+### Build and Deploy
+```sh
+npm run build
+npm run deploy
+```
+This will generate a `dist/` folder and deploy the site automatically.
+
+## Contributing
+Feel free to fork this repository and submit pull requests. Contributions are welcome!
+
+## License
+This project is open-source and available under the [MIT License](LICENSE).
+
