@@ -9,7 +9,6 @@ const AnalyticsTracker = () => {
       page_path: window.location.pathname,
       page_title: document.title,
     });
-    console.log("page_view logged");
   }, [analytics, window.location.pathname]);
 
   return null;

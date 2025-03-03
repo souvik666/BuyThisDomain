@@ -14,15 +14,21 @@ import {
 import { Formik, Form } from "formik";
 import useContactForm from "@/hooks/useContactForm";
 import countries from "@/constants/countries";
+import { useLogger } from "@/hooks/useLogger";
 
 const ContactForm = () => {
   const { formData, submitForm, validate } = useContactForm();
+  const logger = useLogger();
+
   return (
     <Box minW={{ base: "auto", md: "auto", lg: "xl" }} p={6}>
       <Formik
         validateOnChange={false}
         initialValues={formData}
-        onSubmit={(data, helper) => submitForm(data, helper.resetForm)}
+        onSubmit={(data, helper) => {
+          logger.logCustomEvent("form_submission", { ...data });
+          submitForm(data, helper.resetForm);
+        }}
         validate={validate}
       >
         {({ values, handleChange, isSubmitting, isValid, errors }) => (
@@ -32,7 +38,7 @@ const ContactForm = () => {
                 <Fieldset.Legend fontWeight="bold">
                   Let's Connect
                 </Fieldset.Legend>
-                <Fieldset.HelperText color={'whiteAlpha.800'} maxW={'360px'}>
+                <Fieldset.HelperText color={"whiteAlpha.800"} maxW={"360px"}>
                   Interested in buying? Share your contact and offer details,
                   and we'll get back to you ASAP.
                 </Fieldset.HelperText>
@@ -48,7 +54,13 @@ const ContactForm = () => {
                   <Input
                     name="name"
                     value={values.name}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      handleChange(e);
+                      logger.logCustomEvent("input_change", {
+                        field: "name",
+                        value: e.target.value,
+                      });
+                    }}
                   />
                 </Field>
 
@@ -61,7 +73,13 @@ const ContactForm = () => {
                   <Input
                     name="email"
                     value={values.email}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      handleChange(e);
+                      logger.logCustomEvent("input_change", {
+                        field: "email",
+                        value: e.target.value,
+                      });
+                    }}
                   />
                 </Field>
 
@@ -74,7 +92,13 @@ const ContactForm = () => {
                   <Textarea
                     name="message"
                     value={values.message}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      handleChange(e);
+                      logger.logCustomEvent("input_change", {
+                        field: "message",
+                        value: e.target.value,
+                      });
+                    }}
                   />
                 </Field>
 
@@ -89,7 +113,13 @@ const ContactForm = () => {
                     name="offerPrice"
                     type="number"
                     value={values.offerPrice}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      handleChange(e);
+                      logger.logCustomEvent("input_change", {
+                        field: "offerPrice",
+                        value: e.target.value,
+                      });
+                    }}
                   />
                 </Field>
 
@@ -99,8 +129,15 @@ const ContactForm = () => {
                   errorText={errors.country}
                   invalid={!!errors.country}
                 >
-                  <NativeSelectRoot onChange={handleChange}>
+                  <NativeSelectRoot>
                     <NativeSelectField
+                      onChange={(e) => {
+                        handleChange(e);
+                        logger.logCustomEvent("input_change", {
+                          field: "country",
+                          value: e.target.value,
+                        });
+                      }}
                       name="country"
                       items={countries.map((el) => el[0])}
                     />
@@ -112,6 +149,9 @@ const ContactForm = () => {
                 type="submit"
                 alignSelf="flex-start"
                 loading={isSubmitting}
+                onClick={() =>
+                  logger.logCustomEvent("submit_click", { values })
+                }
               >
                 Submit
               </Button>
