@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && firebase deploy && rm -r dist -f"
+    "deploy": "npm run build && firebase deploy && rm -r dist -f",
+    "commit": "npx gic"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.8.1",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@souvik666/gic": "^1.1.4",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
