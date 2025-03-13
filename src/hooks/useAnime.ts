@@ -1,8 +1,9 @@
-import AnimeService from "@/services/animeService";
+ 
+import AnimalService from "@/services/animal.service";
 import { useState, useEffect } from "react";
  
 
-const useAnimeImage = () => {
+const useAnimalImage = () => {
   const [animeImage, setAnimeImage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -10,7 +11,7 @@ const useAnimeImage = () => {
     const fetchImage = async () => {
       setLoading(true);
       try {
-        const url = await AnimeService.getRandomAnimeImage();
+        const url = await AnimalService.getRandomAnimalImage();
         setAnimeImage(url);
       } finally {
         setLoading(false);
@@ -23,4 +24,4 @@ const useAnimeImage = () => {
   return { animeImage, loading };
 };
 
-export default useAnimeImage;
+export default useAnimalImage;

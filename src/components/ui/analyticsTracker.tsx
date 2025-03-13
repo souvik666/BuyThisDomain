@@ -1,16 +1,12 @@
 import { useEffect } from "react";
 
-import { logEvent } from "firebase/analytics";
-import { analytics } from "@/configs/firebase";
+import { useLogger } from "@/hooks/useLogger";
 
 const AnalyticsTracker = () => {
+  const logger = useLogger();
   useEffect(() => {
-    logEvent(analytics, "page_view", {
-      page_path: window.location.pathname,
-      page_title: document.title,
-    });
-  }, [analytics, window.location.pathname]);
-
+    logger.logPageView(window.location.pathname);
+  }, []);
   return null;
 };
 

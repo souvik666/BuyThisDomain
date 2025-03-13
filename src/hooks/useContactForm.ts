@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { db, ref, push, } from "@/configs/firebase";
 import { toaster } from "@/components/ui/toaster";
-import { loginWithSpecificEmail } from "@/services/authService";
+import { loginWithSpecificEmail } from "@/services/auth.service";
 
 
 interface ContactFormData {

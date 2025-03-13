@@ -11,13 +11,13 @@ import {
 
 import { Tooltip } from "@/components/ui/tooltip";
 
-import useAnimeImage from "@/hooks/useAnime";
 import ContactForm from "./contactForm";
 import { useLogger } from "@/hooks/useLogger";
 import { useEffect, useState } from "react";
+import useAnimalImage from "@/hooks/useAnime";
 
 function BrandCta() {
-  const { loading, animeImage } = useAnimeImage();
+  const { loading, animeImage } = useAnimalImage();
   const logger = useLogger();
   const [hovered, setHovered] = useState(false);
 
@@ -57,7 +57,9 @@ function BrandCta() {
             <Box
               onMouseEnter={() => {
                 if (!hovered) {
-                  logger.logCustomEvent("avatar_hover", { item: "anime_image" });
+                  logger.logCustomEvent("avatar_hover", {
+                    item: "anime_image",
+                  });
                   setHovered(true);
                 }
               }}
