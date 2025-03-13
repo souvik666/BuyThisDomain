@@ -65,7 +65,6 @@ Your site is live at: **[http://localhost:5173](http://localhost:5173)**
 ## 🚀 Deploy
 
 ```sh
-npm run build
 npm run deploy
 ```
 
