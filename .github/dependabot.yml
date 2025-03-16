@@ -1,12 +1,7 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
 version: 2
 updates:
-  - package-ecosystem: "npm" # Change to the appropriate package manager (e.g., npm, pip, maven)
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
@@ -20,17 +15,8 @@ updates:
     commit-message:
       prefix: "chore(deps)"
       include: "scope"
-    allow:
-      - dependency-type: "all"
-    versioning-strategy: "increase"
     rebase-strategy: "auto"
     target-branch: "main"
-    commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
-    ignore:
-      - dependency-name: "*"
-        versions: ["0"]
 
   - package-ecosystem: "github-actions"
     directory: "/" 
@@ -39,15 +25,5 @@ updates:
     labels:
       - "dependencies"
       - "ci"
-    allow:
-      - dependency-type: "all"
-    versioning-strategy: "increase"
     rebase-strategy: "auto"
     target-branch: "main"
-    commit-message:
-      prefix: "chore(ci)"
-      include: "scope"
-
-# Enable write access for Dependabot to automatically merge updates
-permissions:
-  contents: write
