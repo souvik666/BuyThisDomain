@@ -20,6 +20,17 @@ updates:
     commit-message:
       prefix: "chore(deps)"
       include: "scope"
+    allow:
+      - dependency-type: "all"
+    versioning-strategy: "increase"
+    rebase-strategy: "auto"
+    target-branch: "main"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    ignore:
+      - dependency-name: "*"
+        versions: ["0"]
 
   - package-ecosystem: "github-actions"
     directory: "/" 
@@ -28,3 +39,15 @@ updates:
     labels:
       - "dependencies"
       - "ci"
+    allow:
+      - dependency-type: "all"
+    versioning-strategy: "increase"
+    rebase-strategy: "auto"
+    target-branch: "main"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+
+# Enable write access for Dependabot to automatically merge updates
+permissions:
+  contents: write
