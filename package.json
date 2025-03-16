@@ -16,7 +16,7 @@
     "commit": "npx gic"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.8.1",
+    "@chakra-ui/react": "^3.13.0",
     "@emotion/react": "^11.14.0",
     "firebase": "^11.4.0",
     "formik": "^2.4.6",
