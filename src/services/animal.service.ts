@@ -8,7 +8,7 @@ class AnimalService {
             return data?.url || "";
         } catch (error) {
             console.error("Error fetching animal image:", error);
-            return "";
+            return "site_icon.png";
         }
     }
 }
